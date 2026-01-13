@@ -1,0 +1,195 @@
+/* --- Variables de Thème --- */
+:root {
+  --primary: #2563eb;        /* Bleu technologique */
+  --primary-dark: #1e40af;
+  --bg-app: #f1f5f9;         /* Gris très clair */
+  --text-dark: #0f172a;      /* Texte principal */
+  --text-muted: #64748b;     /* Texte secondaire */
+  --error: #ef4444;          /* Rouge erreur */
+  --success: #10b981;        /* Vert succès */
+  --white: #ffffff;
+  --border: #e2e8f0;
+  --radius: 12px;
+  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Conteneur Principal --- */
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg-app);
+  padding: 2rem;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* --- Carte du Formulaire --- */
+.auth-card {
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 450px; /* Taille par défaut */
+}
+
+.auth-card.wide {
+  max-width: 750px; /* Taille élargie pour l'inscription */
+}
+
+/* --- Header & Logo --- */
+.auth-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+.auth-header p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* --- Grille du Formulaire --- */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.full-width {
+  grid-column: span 2; /* Prend toute la largeur */
+}
+
+/* --- Champs de Saisie --- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+input, select {
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background-color: var(--white);
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+input.is-invalid {
+  border-color: var(--error);
+  background-color: #fffafb;
+}
+
+/* --- Bouton de Validation --- */
+.btn-submit {
+  width: 100%;
+  padding: 0.875rem;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.1s active;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: var(--primary-dark);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* --- Alertes & Messages --- */
+.messages-container {
+  margin-bottom: 1.5rem;
+}
+
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.alert-danger {
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fee2e2;
+}
+
+.alert-success {
+  background-color: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #dcfce7;
+}
+
+/* --- Footer (Lien de bas de page) --- */
+.auth-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.auth-footer a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsive (Mobile) --- */
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr; /* 1 colonne sur mobile */
+  }
+
+  .full-width {
+    grid-column: span 1;
+  }
+
+  .auth-card {
+    padding: 1.5rem;
+  }
+}

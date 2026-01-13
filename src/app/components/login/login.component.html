@@ -1,0 +1,58 @@
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <div class="auth-header">
+      <div class="logo">Smart<span>Shop</span></div>
+      <p>MicroTech Maroc — Portail B2B</p>
+    </div>
+
+    <h2>Connexion</h2>
+    <p class="subtitle">Accédez à votre espace de gestion commerciale</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email Professionnel</label>
+        <div class="input-wrapper">
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            placeholder="nom@microtech.ma"
+            [class.is-invalid]="f['email'].invalid && f['email'].touched"
+          />
+        </div>
+        <div class="error-msg" *ngIf="f['email'].invalid && f['email'].touched">
+          <span *ngIf="f['email'].errors?.['required']">L'email est requis</span>
+          <span *ngIf="f['email'].errors?.['email']">Format d'email invalide</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="••••••••"
+          [class.is-invalid]="f['password'].invalid && f['password'].touched"
+        />
+        <div class="error-msg" *ngIf="f['password'].invalid && f['password'].touched">
+          <span *ngIf="f['password'].errors?.['required']">Mot de passe requis</span>
+        </div>
+      </div>
+
+      <div class="alert alert-danger" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <button type="submit" class="btn-submit" [disabled]="loading || loginForm.invalid">
+        <span *ngIf="loading" class="spinner"></span>
+        {{ loading ? 'Authentification...' : 'Se connecter' }}
+      </button>
+
+      <div class="auth-footer">
+        <span>Nouveau partenaire ?</span>
+        <a routerLink="/register">Créer un compte</a>
+      </div>
+    </form>
+  </div>
+</div>

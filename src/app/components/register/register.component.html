@@ -1,0 +1,71 @@
+<div class="auth-wrapper">
+  <div class="auth-card wide">
+    <div class="auth-header">
+      <div class="logo">Smart<span>Shop</span></div>
+      <p>Inscription nouveau distributeur</p>
+    </div>
+
+    <h2>Créer un compte</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Nom</label>
+          <input type="text" formControlName="nom" placeholder="Ex: Alaoui" [class.is-invalid]="f['nom'].touched && f['nom'].invalid" />
+        </div>
+        <div class="form-group">
+          <label>Prénom</label>
+          <input type="text" formControlName="prenom" placeholder="Ex: Ahmed" [class.is-invalid]="f['prenom'].touched && f['prenom'].invalid" />
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" formControlName="email" placeholder="contact@entreprise.ma" />
+        </div>
+        <div class="form-group">
+          <label>Téléphone</label>
+          <input type="tel" formControlName="telephone" placeholder="05 22 XX XX XX" />
+        </div>
+
+        <div class="form-group full-width">
+          <label>Adresse du Siège (Casablanca)</label>
+          <input type="text" formControlName="adresse" placeholder="N°, Rue, Quartier..." />
+        </div>
+
+        <div class="form-group">
+          <label>Rôle</label>
+          <select formControlName="role">
+            <option *ngFor="let role of roles" [value]="role.value">{{ role.label }}</option>
+          </select>
+        </div>
+        <div class="form-group" *ngIf="isLivreur()">
+          <label>Véhicule de livraison</label>
+          <input type="text" formControlName="vehicule" placeholder="Type de véhicule" />
+        </div>
+
+        <div class="form-group">
+          <label>Mot de passe</label>
+          <input type="password" formControlName="password" placeholder="••••••••" />
+        </div>
+        <div class="form-group">
+          <label>Confirmer</label>
+          <input type="password" formControlName="confirmPassword" placeholder="••••••••" />
+        </div>
+      </div>
+
+      <div class="messages-container">
+        <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+        <div class="alert alert-success" *ngIf="successMessage">{{ successMessage }}</div>
+      </div>
+
+      <button type="submit" class="btn-submit" [disabled]="loading || registerForm.invalid">
+        {{ loading ? 'Traitement en cours...' : "Finaliser l'inscription" }}
+      </button>
+
+      <div class="auth-footer">
+        <span>Déjà enregistré ?</span>
+        <a routerLink="/login">Se connecter</a>
+      </div>
+    </form>
+  </div>
+</div>
